@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Create Config File
-        run: echo "${{ secrets.FIREBASECONFIG }}" > config.json
+        run: echo "'${{ secrets.FIREBASECONFIG }}'" > config.json
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
