@@ -11,11 +11,7 @@ jobs:
 
       - name: Create Config File
         run: |
-          echo "window.GOOGLE_API_KEY = '${{ secrets.FIREBASECONFIG }}';" > config.js
-          cat config.js  # Debugging step to check if file is created
-
-      - name: List Files
-        run: ls -la  # Check if config.js exists
+          echo "${{ secrets.GOOGLE_API_KEY }}" > config.json
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
