@@ -1,15 +1,19 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy
 on:
   push:
     branches:
       - main
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    concurrency: ci-${{github.ref}}
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Create Config File
         run: echo "window.FIREBASECONFIG = '${{ secrets.FIREBASECONFIG }}';" > config.js
+        
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
