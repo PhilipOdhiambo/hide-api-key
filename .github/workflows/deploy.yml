@@ -11,7 +11,7 @@ jobs:
 
       - name: Create Config File
         run: |
-          echo "${{ secrets.GOOGLE_API_KEY }}" > config.json
+          echo "${{ secrets.FIREBASECONFIG }}" > config.json
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
