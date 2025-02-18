@@ -4,21 +4,21 @@ on:
     branches:
       - main
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    concurrency: ci-${{github.ref}}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Create Config File
         run: |
-          echo "FDFDFDF" >> config.js
+          echo "window.GOOGLE_API_KEY = '${{ secrets.FIREBASECONFIG }}';" > config.js
+          cat config.js  # Debugging step to check if file is created
+
+      - name: List Files
+        run: ls -la  # Check if config.js exists
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
-        env:
-          window.FIREBASECONFIG: ${{ secrets.FIREBASECONFIG }}
         with:
-          branch: main
+          branch: gh-pages
           folder: .
