@@ -1,0 +1,1 @@
+## This project show case how to hide secrets
