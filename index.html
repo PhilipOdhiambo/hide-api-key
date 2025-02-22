@@ -1,18 +1,18 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="config.js"></script> -->
-    <title>Hide API Keys</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <script src="config.json"></script> -->
+  <title>Hide API Keys</title>
 </head>
+
 <body>
-    <script>
-        fetch("./config.json")
-          .then(response => response.json())
-          .then(config => {
-            window.FIREBASECONFIG = config;
-            console.log("Google API Key:", window.FIREBASECONFIG);
-          })
-          .catch(() => console.error("Failed to load API key"));
-      </script>
+  <script type="module">
+    fetch('config.json')
+  .then(response => response.json())
+  .then(config => console.log(config.apiKey));
+
+  </script>
+
 </html>
