@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: echo  "${{ secrets.FIREBASECONFIG }}" > config.json
+      - run: echo  "${{ secrets.FIREBASECONFIG }}" >> config.json
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: main
